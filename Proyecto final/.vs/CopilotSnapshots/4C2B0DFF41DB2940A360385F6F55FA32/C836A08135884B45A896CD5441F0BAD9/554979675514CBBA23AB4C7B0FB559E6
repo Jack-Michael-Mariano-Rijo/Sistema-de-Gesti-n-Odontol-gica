@@ -1,0 +1,112 @@
+﻿using Microsoft.Reporting.WinForms;
+using System;
+using System.Data;
+using System.Data.SqlClient;
+using System.IO;
+using System.Windows.Forms;
+using Capa_datos;
+
+namespace Proyecto_final
+{
+    public partial class FrmReporteIngresosMensuales : Form
+    {
+        public FrmReporteIngresosMensuales()
+        {
+            InitializeComponent();
+      
+        }
+
+        private void FrmReporteIngresosMensuales_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                // ✔ REPORT VIEWER
+                reportViewer2.Dock = DockStyle.Fill;
+                reportViewer2.ZoomMode = ZoomMode.PageWidth;
+
+                // ✔ RDLC
+                string rutaReporte = Path.Combine(
+                    Application.StartupPath,
+                    "Reports",
+                    "Report2.rdlc"
+                );
+
+                if (!File.Exists(rutaReporte))
+                {
+                    MessageBox.Show("No se encontró el RDLC:\n" + rutaReporte);
+                    return;
+                }
+
+                reportViewer2.LocalReport.ReportPath = rutaReporte;
+                reportViewer2.LocalReport.DataSources.Clear();
+
+                // ✔ TU MISMA CONEXIÓN (Capa_datos)
+                SqlConnection cn = Conexion.ObtenerConexion();
+
+                if (cn == null)
+                {
+                    MessageBox.Show("Error: la conexión es NULL.");
+                    return;
+                }
+
+                // ✔ SP
+                SqlDataAdapter da = new SqlDataAdapter("sp_IngresosMensuales", cn);
+                da.SelectCommand.CommandType = CommandType.StoredProcedure;
+                da.SelectCommand.Parameters.AddWithValue("@Anio", DateTime.Now.Year);
+
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                if (dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("No hay datos para mostrar.");
+                    return;
+                }
+
+                // ✔ CÁLCULOS
+                decimal ingresoTotal = 0;
+                decimal ingresoMaximo = 0;
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    if (row["IngresoTotal"] != DBNull.Value)
+                    {
+                        decimal ingreso = Convert.ToDecimal(row["IngresoTotal"]);
+                        ingresoTotal += ingreso;
+
+                        if (ingreso > ingresoMaximo)
+                            ingresoMaximo = ingreso;
+                    }
+                }
+
+                decimal promedio = ingresoTotal / dt.Rows.Count;
+
+                // ✔ DATASET (DEBE COINCIDIR CON EL RDLC)
+                reportViewer2.LocalReport.DataSources.Add(
+                    new ReportDataSource("dsIngresos", dt)
+                );
+
+                // ✔ PARÁMETROS
+                ReportParameter[] parametros =
+                {
+                    new ReportParameter("IngresoMaximo", ingresoMaximo.ToString("C2")),
+                    new ReportParameter("PromedioMensual", promedio.ToString("C2")),
+                    new ReportParameter("IngresoTotal", ingresoTotal.ToString("C2")),
+                    new ReportParameter("AnioReporte", DateTime.Now.Year.ToString()),
+                    new ReportParameter("FechaReporte", DateTime.Now.ToString("dd/MM/yyyy"))
+                };
+
+                reportViewer2.LocalReport.SetParameters(parametros);
+
+                reportViewer2.RefreshReport();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar el reporte:\n" + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+    }
+}

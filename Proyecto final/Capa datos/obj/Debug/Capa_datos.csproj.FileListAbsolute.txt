@@ -1,0 +1,9 @@
+C:\Users\roger\OneDrive\Desktop\Roger Hamer saviñon Natera\C#\Proyecto final\Capa datos\bin\Debug\Capa datos.dll
+C:\Users\roger\OneDrive\Desktop\Roger Hamer saviñon Natera\C#\Proyecto final\Capa datos\bin\Debug\Capa datos.pdb
+C:\Users\roger\OneDrive\Desktop\Roger Hamer saviñon Natera\C#\Proyecto final\Capa datos\bin\Debug\System.Configuration.ConfigurationManager.dll
+C:\Users\roger\OneDrive\Desktop\Roger Hamer saviñon Natera\C#\Proyecto final\Capa datos\bin\Debug\System.Configuration.ConfigurationManager.xml
+C:\Users\roger\OneDrive\Desktop\Roger Hamer saviñon Natera\C#\Proyecto final\Capa datos\obj\Debug\Capa_datos.csproj.AssemblyReference.cache
+C:\Users\roger\OneDrive\Desktop\Roger Hamer saviñon Natera\C#\Proyecto final\Capa datos\obj\Debug\Capa_datos.csproj.CoreCompileInputs.cache
+C:\Users\roger\OneDrive\Desktop\Roger Hamer saviñon Natera\C#\Proyecto final\Capa datos\obj\Debug\Capa_datos.csproj.Up2Date
+C:\Users\roger\OneDrive\Desktop\Roger Hamer saviñon Natera\C#\Proyecto final\Capa datos\obj\Debug\Capa datos.dll
+C:\Users\roger\OneDrive\Desktop\Roger Hamer saviñon Natera\C#\Proyecto final\Capa datos\obj\Debug\Capa datos.pdb

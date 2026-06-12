@@ -1,0 +1,16 @@
+C:\Users\roger\OneDrive\Desktop\Roger Hamer saviñon Natera\C#\Proyecto final\CapaEntidad\bin\Debug\CapaEntidad.dll
+C:\Users\roger\OneDrive\Desktop\Roger Hamer saviñon Natera\C#\Proyecto final\CapaEntidad\bin\Debug\CapaEntidad.pdb
+C:\Users\roger\OneDrive\Desktop\Roger Hamer saviñon Natera\C#\Proyecto final\CapaEntidad\bin\Debug\Capa negocio.dll
+C:\Users\roger\OneDrive\Desktop\Roger Hamer saviñon Natera\C#\Proyecto final\CapaEntidad\bin\Debug\Proyecto final.exe
+C:\Users\roger\OneDrive\Desktop\Roger Hamer saviñon Natera\C#\Proyecto final\CapaEntidad\bin\Debug\System.Configuration.ConfigurationManager.dll
+C:\Users\roger\OneDrive\Desktop\Roger Hamer saviñon Natera\C#\Proyecto final\CapaEntidad\bin\Debug\Capa datos.dll
+C:\Users\roger\OneDrive\Desktop\Roger Hamer saviñon Natera\C#\Proyecto final\CapaEntidad\bin\Debug\Capa negocio.pdb
+C:\Users\roger\OneDrive\Desktop\Roger Hamer saviñon Natera\C#\Proyecto final\CapaEntidad\bin\Debug\Proyecto final.pdb
+C:\Users\roger\OneDrive\Desktop\Roger Hamer saviñon Natera\C#\Proyecto final\CapaEntidad\bin\Debug\Proyecto final.exe.config
+C:\Users\roger\OneDrive\Desktop\Roger Hamer saviñon Natera\C#\Proyecto final\CapaEntidad\bin\Debug\System.Configuration.ConfigurationManager.xml
+C:\Users\roger\OneDrive\Desktop\Roger Hamer saviñon Natera\C#\Proyecto final\CapaEntidad\bin\Debug\Capa datos.pdb
+C:\Users\roger\OneDrive\Desktop\Roger Hamer saviñon Natera\C#\Proyecto final\CapaEntidad\obj\Debug\CapaEntidad.csproj.AssemblyReference.cache
+C:\Users\roger\OneDrive\Desktop\Roger Hamer saviñon Natera\C#\Proyecto final\CapaEntidad\obj\Debug\CapaEntidad.csproj.CoreCompileInputs.cache
+C:\Users\roger\OneDrive\Desktop\Roger Hamer saviñon Natera\C#\Proyecto final\CapaEntidad\obj\Debug\CapaEnti.526B9C87.Up2Date
+C:\Users\roger\OneDrive\Desktop\Roger Hamer saviñon Natera\C#\Proyecto final\CapaEntidad\obj\Debug\CapaEntidad.dll
+C:\Users\roger\OneDrive\Desktop\Roger Hamer saviñon Natera\C#\Proyecto final\CapaEntidad\obj\Debug\CapaEntidad.pdb

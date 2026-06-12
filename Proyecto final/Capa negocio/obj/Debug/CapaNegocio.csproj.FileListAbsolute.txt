@@ -1,0 +1,11 @@
+C:\Users\roger\OneDrive\Desktop\Roger Hamer saviñon Natera\C#\Proyecto final\Capa negocio\bin\Debug\Capa negocio.dll
+C:\Users\roger\OneDrive\Desktop\Roger Hamer saviñon Natera\C#\Proyecto final\Capa negocio\bin\Debug\Capa negocio.pdb
+C:\Users\roger\OneDrive\Desktop\Roger Hamer saviñon Natera\C#\Proyecto final\Capa negocio\bin\Debug\Capa datos.dll
+C:\Users\roger\OneDrive\Desktop\Roger Hamer saviñon Natera\C#\Proyecto final\Capa negocio\bin\Debug\System.Configuration.ConfigurationManager.dll
+C:\Users\roger\OneDrive\Desktop\Roger Hamer saviñon Natera\C#\Proyecto final\Capa negocio\bin\Debug\Capa datos.pdb
+C:\Users\roger\OneDrive\Desktop\Roger Hamer saviñon Natera\C#\Proyecto final\Capa negocio\bin\Debug\System.Configuration.ConfigurationManager.xml
+C:\Users\roger\OneDrive\Desktop\Roger Hamer saviñon Natera\C#\Proyecto final\Capa negocio\obj\Debug\CapaNegocio.csproj.AssemblyReference.cache
+C:\Users\roger\OneDrive\Desktop\Roger Hamer saviñon Natera\C#\Proyecto final\Capa negocio\obj\Debug\CapaNegocio.csproj.CoreCompileInputs.cache
+C:\Users\roger\OneDrive\Desktop\Roger Hamer saviñon Natera\C#\Proyecto final\Capa negocio\obj\Debug\CapaNego.81B9D119.Up2Date
+C:\Users\roger\OneDrive\Desktop\Roger Hamer saviñon Natera\C#\Proyecto final\Capa negocio\obj\Debug\Capa negocio.dll
+C:\Users\roger\OneDrive\Desktop\Roger Hamer saviñon Natera\C#\Proyecto final\Capa negocio\obj\Debug\Capa negocio.pdb

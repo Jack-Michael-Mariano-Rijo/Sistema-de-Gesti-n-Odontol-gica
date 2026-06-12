@@ -1,0 +1,182 @@
+﻿using System;
+using System.Data;
+using System.Data.SqlClient;
+
+namespace Capa_datos
+{
+    public class FacturasDAL
+    {
+        // =========================
+        // FACTURAS (CRUD BÁSICO)
+        // =========================
+
+        public bool InsertarFactura(int pacienteID, string estado)
+        {
+            return EjecutarSPSinRetorno("InsertarFactura",
+                new SqlParameter("@PacienteID", pacienteID),
+                new SqlParameter("@Estado", estado));
+        }
+
+        public bool EditarFactura(int facturaID, int pacienteID, string estado)
+        {
+            return EjecutarSPSinRetorno("EditarFactura",
+                new SqlParameter("@FacturaID", facturaID),
+                new SqlParameter("@PacienteID", pacienteID),
+                new SqlParameter("@Estado", estado));
+        }
+
+        public bool EliminarFactura(int facturaID)
+        {
+            return EjecutarSPSinRetorno("EliminarFactura",
+                new SqlParameter("@FacturaID", facturaID));
+        }
+
+        // =========================
+        // 🔥 FACTURA COMPLETA (CON MONTO)
+        // =========================
+
+        public bool CrearFacturaCompleta(int pacienteID, int tratamientoID, int monto, string metodoPago, string estado)
+        {
+            return EjecutarSPSinRetorno("CrearFacturaCompleta",
+                new SqlParameter("@PacienteID", pacienteID),
+                new SqlParameter("@TratamientoID", tratamientoID),
+                new SqlParameter("@Monto", monto),
+                new SqlParameter("@MetodoPago", metodoPago),
+                new SqlParameter("@Estado", estado));
+        }
+
+        // =========================
+        // PAGOS
+        // =========================
+
+        public bool RegistrarPago(int facturaID, decimal monto, string metodoPago)
+        {
+            return EjecutarSPSinRetorno("RegistrarPago",
+                new SqlParameter("@FacturaID", facturaID),
+                new SqlParameter("@Monto", monto),
+                new SqlParameter("@MetodoPago", metodoPago));
+        }
+
+        // =========================
+        // CONSULTAS
+        // =========================
+
+        public DataTable MostrarFacturas()
+        {
+            return EjecutarSPDataTable("MostrarFacturas");
+        }
+
+        public DataTable ObtenerPacientes()
+        {
+            return EjecutarSPDataTable("ObtenerPacientes");
+        }
+
+        public DataTable ObtenerTratamientos()
+        {
+            return EjecutarSPDataTable("ObtenerTratamientos");
+        }
+
+        public DataTable ObtenerEstadisticas()
+        {
+            return EjecutarSPDataTable("EstadisticasFacturacion");
+        }
+
+        // =========================
+        // 🔥 OBTENER COSTO TRATAMIENTO (CORREGIDO)
+        // =========================
+
+        public int ObtenerPrecioTratamiento(int tratamientoID)
+        {
+            SqlConnection con = Conexion.ObtenerConexion();
+            int costo = 0;
+
+            try
+            {
+                con.Open();
+
+                SqlCommand cmd = new SqlCommand("ObtenerPrecioTratamiento", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@TratamientoID", tratamientoID);
+
+                object result = cmd.ExecuteScalar();
+
+                if (result != null && result != DBNull.Value)
+                {
+                    costo = Convert.ToInt32(result);
+                }
+            }
+            catch
+            {
+                costo = 0;
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return costo;
+        }
+
+        // =========================
+        // HELPERS
+        // =========================
+
+        private bool EjecutarSPSinRetorno(string sp, params SqlParameter[] parameters)
+        {
+            SqlConnection con = Conexion.ObtenerConexion();
+
+            try
+            {
+                con.Open();
+
+                SqlCommand cmd = new SqlCommand(sp, con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                if (parameters != null)
+                    cmd.Parameters.AddRange(parameters);
+
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        private DataTable EjecutarSPDataTable(string sp, params SqlParameter[] parameters)
+        {
+            SqlConnection con = Conexion.ObtenerConexion();
+            DataTable tabla = new DataTable();
+
+            try
+            {
+                con.Open();
+
+                SqlCommand cmd = new SqlCommand(sp, con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                if (parameters != null)
+                    cmd.Parameters.AddRange(parameters);
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(tabla);
+            }
+            catch
+            {
+                // silencio controlado
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return tabla;
+        }
+    }
+}
